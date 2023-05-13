@@ -51,6 +51,7 @@ Creation of synthetic indicator called Favourable Team Index, which is going to 
 3. Tableau
 	* Data visualization
 	* Data exploration
+	* Combination of data aggregated at team-level in SQL with Player-level data found in the Internet (regarding player prices & points gained through season)
 	* Further data aggregation through calculated fields
 	* Combination of Dashboard into Data Story as a final product of a project
 4. Powerpoint
@@ -77,6 +78,9 @@ For the purpose of the project I prepared:
 	* Creation of views to improve readability and ease usage of collected data in the database
 	* Queries to explore data for the most optimal selection for one of the formation
 	* Queries to export the data into csv file, possible to use by Tableau public
+
+5. Variants.jpg
+	Supplement for FPL_Analysis.sql, explanation how the teams are divided into different variatns
 
 
 
