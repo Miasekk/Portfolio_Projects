@@ -1,0 +1,76 @@
+Hello,
+
+The repository you are discovering right now is connected with my portoflio project.
+The project is called "Fantasy Premier League - Data driven decisions". If you are familiar with Fantasy Premier League game you probably know what you may see in this project.
+Regarding those, who are not familiar with the product, I have described briefly what it is. But to better understand th whole proccess I would suggest to visit sited below:
+
+https://www.premierleague.com/news/2173986
+https://fantasy.premierleague.com/help
+
+
+
+Preface to the project
+
+I am huge football enthusiast so I fell comfortable around the people who share the love for football with me. I am forutnate, because I have met plenty of people who are following football events.
+Among this group I have one person with who I speak the most - Michal. Even if we both love football, we have usually different view for multiple events.
+This year we decided to compete for the title of "The Premier League Expert". Rules are simple. The one, who will gather the higher amount of points at the end of the season will be honoured as Expert.
+
+
+
+Timeframe of the project
+
+In the Premier League each of the team has to play 38 matches during the whole season. The moment where I am planning to exchange the attitude is just ahead od 33rd fixture (6 left).
+At this point of time I was leading by 12 points advantage. The margin was minimal so it was pretty sure, that the rivarly will last until the last fixture of the season.
+As I looked into our results it seemed to me interesting, that although we have completely different point of view for many aspects, players and teams, we are still very close after 32 game weeks.
+We had one thing in common - we both made all the squad decision regarding our feeling and nothing more. To improve my chances I have decided to use data accumulated in the course of the season.
+Later on the data have impacted my selection decisions.
+
+
+Objectives of the project
+1. Outscoring my friend
+2. Scoring more points on average in comparison with my intuition based approach
+3. Being among top 50 000 managers at least once
+4. Scoring 100 pts at least once
+
+Method used for the purpose of the project
+Creation of synthetic indicator called Favourable Team Index, which is going to indicate on which team I should rely.
+
+Tools used for purpose of the project
+1. Microsoft Excel
+	* Data cleaning & remodelling 
+2. PostgresQL
+	* Data aggregation
+	* Data Exploration
+	* Creation of indicators
+	* 
+	
+3. Tableau
+	* Data visualization
+	* Data exploration
+	* Combination of aggregated in the database team-level data with player-level data
+	* Creation of Data Story as a final product of a project
+4. Powerpoint
+	* Representation of a Data Story created in Tableau in the form of presentation
+
+
+ELements of the project placed in this repository
+1. Project_Introduction.txt
+Text document, which u are reading right now. Introduction to the project
+2. Tableau_path.txt
+Link to the Data Story about the project available at my Tableau profile
+3.Project.pptx
+Presentation of the project
+4. Data_exploration.sql
+Operations connected with initial, raw data. 
+For the purpose of the project I prepared:
+	* Queries to create, import tables.
+	* Queries to create indicators regarding different aspects at the team level
+	* Creation of views to improve readability and ease usage of collected data in the database
+	* Queries to explore data for the most optimal selection for one of the formation
+	* Queries to export the data into csv file, possible to use by Tableau public
+
+
+
+
+
+
