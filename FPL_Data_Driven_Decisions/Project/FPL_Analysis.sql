@@ -20,8 +20,8 @@ CREATE TABLE last_3_season(
 	xGD_per_MP DECIMAL
 );
 
-
---Importing data regarding last 3 seasons
+-- Imported data was taken from "https://fbref.com/" & remodelled in Microsoft Excel
+-- Importing data regarding last 3 seasons
 COPY last_3_season(Season, Year, Position, Squad, MP, W, D, L, GS, GL, GD, Points, Pts_per_MP, xGS,xGL, xGD, xGD_per_MP
 )
 FROM 'C:\Users\Maciek\AppData\Local\Temp\zcx\teams_3_seasons.csv'
@@ -62,7 +62,7 @@ WHERE
 GROUP BY 
 	ls.squad)
 	
--- to estimate firepower I have divided teams into 5 equal size groups
+-- To estimate firepower I have divided teams into 5 equal size groups
 SELECT -- outer query to assign points regarding firepower
 	squad,
 	variant,
@@ -110,9 +110,9 @@ FROM
 
 --- After calculation of firepower we can evaluate how many fixtures left each team has
 --- The more matches ahead, the more chances to score a point until the end of the season
---- For this purpose I have downloaded data from Internet where each teams fixtures were precisely divided into game weeks, what will let us visualize calendar of each team in further analysis
+--- For this purpose I have prepared the data basing on plans for upcoming gameweeks. Each teams fixtures were precisely divided into game weeks, what will let us visualize calendar of each team in further analysis
 --- Depending on amount of matches to be played I have assigned points from 3 to 0, breaking teams into 4 groups.
---- View regarding amount of fixtures will be created for creation of Favourable Team Index
+--- VIEW regarding amount of fixtures was created for purpose of creation Favourable Team Index
 
 -- Creation of table, where upcoming fixtures will be stored
 CREATE TABLE up_fixtures(
@@ -180,10 +180,10 @@ ORDER BY
 );
 
 --- Now I am going to evaluate average rivals difficulty for each team
---- For this purposes I will use created VIEW for "firepower indicator" to evaluate rival's strength & combine it with table which consists of information regarding upcoming fixtures
+--- For this purposes I will use created earlier VIEW for "firepower" to evaluate rival's strength & combine it with table which consists of information regarding upcoming fixtures
 --- To evaluate so called "Difficulty Index" I am going to calculate average firepower of rivals
 --- Basing on "Difficulty Index" I will divide teams again into 5 groups and assign points accordingly to Difficulty Indicator
---- Result will be saved in view for further purposes
+--- Result will be saved in view for further purposes and will become an component of Favourable Team Index
 
 
 CREATE VIEW matches_difficulties AS(
@@ -229,15 +229,15 @@ ORDER BY
 --- I have divided teams into 2 groups basing on goal lost per game (glpg)
 --- "Weak defence label" was assigned to team who was in the worse half regarding glpg.
 --- Later on, basing on upcoming fixtures I have evaluated percantage of games versus weak defences
---- For data driven decision it is significantly important, because goals scored bring the highest amount of points
---- Data was
+--- For player selectionit is significantly important indicator, because goals scored bring the highest amount of points
+--- Query was wrapped into View
 
 
 
----CTE to assign level of defence (worse or better)
+
 
 CREATE VIEW defences_ahead AS(
-WITH goal_lost AS( 
+WITH goal_lost AS(  ---CTE to assign level of defence (worse or better)
 SELECT 
 	l.squad, 
 	l.gl,
@@ -251,7 +251,7 @@ where
 ORDER BY 
 	l.gl  DESC
 ),
---- CTE to amount of rivals regarding level of defense
+--- CTE to count amount of rivas by level of their defence
 Def_divided AS(
 	SELECT 
 		team, 
@@ -282,6 +282,7 @@ Def_divided AS(
 	GROUP BY 
 		team, 
 		defense_status)
+		
 --Final query with percantage result & pts assigned
 SELECT 
 	team,
@@ -299,7 +300,7 @@ WHERE
 
 
 --- Now I have calculated 4 indicators. Each of them is stored in VIEW. 
---- Teams status regarding chosen indicator can be seen in:
+--- Teams status regarding chosen indicator can be seen at:
 --- A) Powerpoint presentation (placed in repository) on 3rd slide
 --- B) At Tableau profile. Link placed in Tableu_Data_Story_Link.txt at page called 'Premier League Indicators'
 
@@ -337,7 +338,7 @@ GROUP BY
 ORDER BY 
 	SUM(pts) DESC
 	
---- Favourable Team Index can be seen:
+--- Favourable Team Index can be seen at:
 --- A) Powerpoint presentation (placed in repository) on 4th slide
 --- B) At Tableau profile. Link placed in Tableu_Data_Story_Link.txt at page called 'Favourable Team Index'
 --- Now I have all the data needed to evaluate status of each team
@@ -348,7 +349,7 @@ ORDER BY
 --- Before I will move to the Tableau and selection proccess I will prepare 2 additional datasets
 --- The First is schedule for each team to visualize in Tableau how the calendar of each team is going to look like and how difficult game I may expect
 --- Additionally I want to see when teams will play 2 matches in 1 gameweek
---- Additionally later I have saved schedule as VIEW. I will need this dataset during selection of goalkeepers below
+--- Additionally later I have saved schedule as VIEW. I will need this dataset during selection of goalkeepers (placed in the last section of code in this file)
 
 COPY(
 SELECT 
@@ -394,7 +395,7 @@ CSV HEADER;
 --- To choose appropriate players I decided to combine each team along and calculate against what level of firepower they are going to play 
 --- Later on I checked what team from the pair is going to play versus weaker opponent and this goalkeeper I assigned as picked in 'gk_chosen' column
 --- Additionally I added in CTE calculations regarding performance of defense of each team since the beginning of the season, this will be used in Tableau to filter out the weakest defenses
---- further filtering will be done in Tableau by LOD calculations
+--- Further filtering will be done in Tableau by LOD calculations
 
 ---CTE to evalute defense performance to a team
 WITH gl_lost AS(
