@@ -1,0 +1,48 @@
+Hello,
+
+In this project I wanted to check what actors/actresses and directors/directress are the most involved in creation of the most popular TV movies*.
+Additionally I wanted to check what kind of collaborations were the most successful across decades and who is the most universal/versatile in theirs profession.
+
+*The most popular movies are based on IMDB users rating
+
+I have used following datasets:
+https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows
+
+
+
+Objectives of the project
+1. Clean raw data downloaded from the Internet
+2. Find the most popular and the most versatile actors/directors. On the top of that find the most successful collaboration between actors and between actors and directors.
+3. Prepare background of the visualization in Figma
+4. Create interactive dashboard in Tableau
+
+
+Tools used for purpose of the project
+1. Microsoft Excel
+	* Data cleaning 
+2. PostgresQL
+	* Data aggregation
+	* Data Exploration
+	* Creation of tables for specific questions
+3. Powerpoint
+	* Creation of dashboard background
+4. Tableau
+	* Data visualization
+
+
+ELements of the project placed in this repository
+1. Project_Introduction.txt
+Text document, which u are reading right now. Introduction to the project
+2. TOP1000_IMDB.xlsm
+Cleaned dataset with VB code inside
+3. TOP_actors_directors_analysis.sql
+Retrieving data needed to answer formed questions in different ways
+Functions used:
+	* CTE
+	* Different JOINs
+	* Operation on sets (UNION)
+	* Operation on strings
+	* Subqueries
+
+4. Tableau_path.txt
+Link to the Dashboard available at my Tableau profile
